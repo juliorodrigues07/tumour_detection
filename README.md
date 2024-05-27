@@ -11,7 +11,7 @@ Application of Machine Learning, AI and Data Mining methods, such as YOLOv8 mode
 
 - If you want to see the deployed application, click down below and feel free to test the models with your own instances and visualize a static dashboard about the dataset:
 
-     - **Deploy**: [![Deploy](https://img.shields.io/website-up-down-green-red/http/monip.org.svg)](https://tumour_detection.streamlit.app/)
+     - **Deploy**: [![Deploy](https://img.shields.io/website-up-down-green-red/http/monip.org.svg)](https://tumour-detection.streamlit.app/)
 
 # 1. Requirements
 
@@ -57,7 +57,7 @@ In this section, you can follow detail instructions for executing the project.
 
 5. You first need to be in the _src_ directory to run the command:
      
-      streamlit run 1_🏠_Home.py
+       streamlit run 1_🏠_Home.py
       
 # 4. Project Structure
 
