@@ -3,20 +3,31 @@ import plotly.express    as px
 import streamlit         as st
 import seaborn           as sns
 import pandas            as pd
-from os import getcwd
+from gdown import download
+from os    import getcwd
 
 
 st.set_page_config(layout="wide", page_title="Static Dashboard", page_icon=":bar_chart:")
 
 
 @st.cache_data
-def load_dataset(file_name: str) -> pd.DataFrame | None:
+def load_dataset(file_name: str) -> pd.DataFrame:
 
-    try:
-        df = pd.read_csv(f'{getcwd()}/../datasets/{file_name}.csv')
-    except (IsADirectoryError, NotADirectoryError, FileExistsError, FileNotFoundError):
-        print("Dataset not found or doesn't exists!")
-        return None
+    match file_name:
+        case 'image_statistics':
+            dataset_id = '1Z9ybXEyLQIT4Vky7ADa51PjubIB0dGoc'
+        case 'labels':
+            dataset_id = '1eZn7CHHJ9x7wkrJTSJMdQEpZ9QhiMpn9'
+        case 'coords':
+            dataset_id = '1cnrOSJtQXX28Wi0WPqtU8olNwKVpJhxl'
+        case _:
+            print("Model not found or doesn't exists!")
+            return None
+
+    output_file = f'{file_name}.csv'
+    download(f'https://drive.google.com/uc?id={dataset_id}', output_file)
+
+    df = pd.read_csv(output_file)
 
     return df
 
@@ -31,7 +42,7 @@ if 'coords' not in st.session_state:
 df_status = st.container()
 if st.session_state['labels'] is None or st.session_state['image_statistics'] is None or st.session_state['coords'] is None:
     df_status.error('Error loading a dataset!')
-    
+
 st.title('Graphs About the Dataset')
 
 if st.session_state['labels'] is not None:

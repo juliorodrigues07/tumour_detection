@@ -1,5 +1,6 @@
 from warnings     import filterwarnings
 from keras.models import load_model
+from gdown        import download
 from PIL          import Image
 from os           import getcwd
 import streamlit  as st
@@ -12,14 +13,31 @@ filterwarnings('ignore', category=FutureWarning)
 
 
 @st.cache_data
+def load_file(file_id: str, file_name: str) -> any:
+
+    download(f'https://drive.google.com/uc?id={file_id}', file_name)
+    return file_name
+
+
+@st.cache_data
 def cache_model(file_name: str) -> any:
 
-    try:
-        model = load_model(f'{getcwd()}/../models/{file_name}.keras')
-        return model
-    except (IsADirectoryError, NotADirectoryError, FileExistsError, FileNotFoundError):
-        print("Model not found or doesn't exists!")
-        return None
+    match file_name:
+        case 'base':
+            model_id = '1wBfZfklJuHmJ2Ak7qbFiJ5SvotgdkrHh'
+        case 'reduced':
+            model_id = '1ETaEFZRdxa51O8Ke-625mkytNVz89hIn'
+        case 'balanced':
+            model_id = '1V1FAbkJGpMvuDU7GVo3QtghsOcEx0Gqz'
+        case _:
+            print("Model not found or doesn't exists!")
+            return None
+
+    model_file = f'{file_name}.keras'
+    download(f'https://drive.google.com/uc?id={model_id}', model_file)
+    model = load_model(model_file)
+
+    return model
 
 
 def validate_input(file: any) -> tuple[bool, np.ndarray] | tuple[bool, str]:
@@ -66,10 +84,10 @@ def detect_instance(input_data: np.ndarray, model_name: str) -> np.ndarray | str
 
 if __name__ == '__main__':
 
-    try:
-        st.sidebar.image(f'{getcwd()}/../assets/stock.jpg', width=280)
-    except (IsADirectoryError, NotADirectoryError, FileExistsError, FileNotFoundError):
-        print("Image not found or doesn't exists!")
+    if 'img_file' not in st.session_state:
+        st.session_state['img_file'] = load_file(file_id='15AM0XNvajHjim7GnteoAcB9X335QDBlC', file_name='brain.jpg')
+
+    st.sidebar.image(st.session_state['img_file'], width=280)
 
     left_col, right_col = st.columns(2)
 
