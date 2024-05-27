@@ -23,9 +23,7 @@ Application of Machine Learning, AI and Data Mining methods, such as YOLOv8 mode
 
       pip install virtualenv
 
-- Libraries: [Keras](https://keras.io/), [KerasCV](https://keras.io/keras_cv/), [KerasTuner](https://keras.io/keras_tuner/), [TensorFlow](https://www.tensorflow.org/?hl=pt-br), [imbalanced-learn](https://imbalanced-learn.org/stable/), [OpenCV](https://opencv.org/), [pandas](https://pandas.pydata.org/), [Streamlit](https://streamlit.io/), [Plotly express](https://plotly.com/python/plotly-express/), [Kaleido](https://github.com/plotly/Kaleido), [seaborn](https://seaborn.pydata.org/), [Matplotlib](https://matplotlib.org/), [numpy](https://numpy.org/), [Pillow](https://pillow.readthedocs.io/en/stable/), [gdown](https://pypi.org/project/gdown/) and [google-colab](https://pypi.org/project/google-colab/);
-
-- Environments: [Jupyter](https://jupyter.org/).
+- Libraries: [Keras](https://keras.io/), [KerasCV](https://keras.io/keras_cv/), [TensorFlow](https://www.tensorflow.org/?hl=pt-br), [OpenCV](https://opencv.org/), [pandas](https://pandas.pydata.org/), [Streamlit](https://streamlit.io/), [Plotly express](https://plotly.com/python/plotly-express/), [seaborn](https://seaborn.pydata.org/), [Matplotlib](https://matplotlib.org/), [numpy](https://numpy.org/), [Pillow](https://pillow.readthedocs.io/en/stable/) and [gdown](https://pypi.org/project/gdown/).
 
 # 2. Web App
 
@@ -57,50 +55,15 @@ In this section, you can follow detail instructions for executing the project.
 
        pip install -r requirements.txt
 
-## 3.1. Detector and Dashboard
-
-- You first need to be in the _src_ directory to run the command:
+5. You first need to be in the _src_ directory to run the command:
      
       streamlit run 1_🏠_Home.py
-
-## 3.2. Data Mining
-
-- To visualize the notebooks online and run them ([Google Colaboratory](https://colab.research.google.com/)), click on the following links:
-    -  [EDA](https://colab.research.google.com/github/juliorodrigues07/tumour_detection/blob/master/notebooks/1_eda.ipynb);
-    -  [Data Mining](https://colab.research.google.com/github/juliorodrigues07/tumour_detection/blob/master/notebooks/brain_tumor_detection_w_keras_yolo_v8.ipynb).
- 
-- To run the notebooks locally, run the commands in the _notebooks_ directory following the template: `jupyter notebook <file_name>.ipynb`.
-  
-    - EDA (Exploratory Data Analysis):
-
-          jupyter notebook 1_eda.ipynb
-
-    - Data Mining:
-
-          jupyter notebook brain_tumor_detection_w_keras_yolo_v8.ipynb
       
 # 4. Project Structure
 
     .
     ├── README.md                             <- Project's documentation
     ├── requirements.txt                      <- File containing all the required dependencies to run the project
-    ├── plots                                 # Directory containing all the graph plots generated
-    ├── assets                                # Directory containing images used in README.md and in the deployed app
-    ├── datasets                              # Directory containing all used or generated datasets in the project
-    |   ├── image_statistics.csv              <- Statistical data about the dataset (std, mean, channels, ...)
-    |   ├── labels.csv                        <- Tumour types and quantities data
-    |   └── coords.csv                        <- Detections data (coordinates and area)
-    ├── docs                                  # Directory containing all the presentation slides about the project      
-    |   ├── Transparencies - Partial I.pdf
-    |   ├── Transparencies - Partial II.pdf
-    |   └── Transparencies - Final.pdf          
-    └── models                                # Directory containing all generated models in the project
-    |   ├── base.keras                        <- Trained with vanilla dataset
-    |   ├── reduced.keras                     <- Trained with reduced dataset
-    |   └── balanced.keras                    <- Trained with balanced dataset
-    ├── notebooks                             # Directory containing project's main jupyter notebook
-    |   ├── 1_eda.ipynb
-    |   └── brain_tumor_detection_w_keras_yolo_v8.ipynb
     └── src                                   # Directory containing the web application
         ├── 1_🏠_Home.py                      <- Main page with the tumour detector
         └── pages                             # Child pages directory
