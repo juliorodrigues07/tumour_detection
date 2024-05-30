@@ -1,13 +1,15 @@
 [![Jupyter Notebook](https://img.shields.io/badge/jupyter-%23FA0F00.svg?style=for-the-badge&logo=jupyter&logoColor=ffffff)](https://jupyter.org/)
 [![Python3](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/downloads/release/python-3106/)
 
-# Brain Tumour Detection
+# Brain Tumour Detector
 
 Application of Machine Learning, AI and Data Mining methods, such as YOLOv8 model and Convolutional Neural Networks (CNNs) for building a model capable of detecting tumours in brain CT scans.
 
 - We used a public dataset available in [Kaggle](https://www.kaggle.com) to develop the project. It's publicly available at the following link: [Medical Image DataSet: Brain Tumor Detection](https://www.kaggle.com/datasets/pkdarabi/medical-image-dataset-brain-tumor-detection/data);
 
-- We built the project based on a existing Jupyter notebook, also publicly available at Kaggle: [Brain Tumor Detection w/Keras YOLO V8](https://www.kaggle.com/code/banddaniel/brain-tumor-detection-w-keras-yolo-v8); 
+- We built the project based on an existing Jupyter notebook, also publicly available at Kaggle: [Brain Tumor Detection w/Keras YOLO V8](https://www.kaggle.com/code/banddaniel/brain-tumor-detection-w-keras-yolo-v8);
+
+- Although the achieved results weren't satisfactory, we constructed a model which CIoU was almost 3x lower than the original model and a mAP almost 7x higher. The optimization tweaks also heavily reduced the training time (more than 6x faster);
 
 - If you want to see the deployed application, click down below and feel free to test the models with your own instances and visualize a static dashboard about the dataset:
 
@@ -23,7 +25,11 @@ Application of Machine Learning, AI and Data Mining methods, such as YOLOv8 mode
 
       pip install virtualenv
 
-- Libraries: [Keras](https://keras.io/), [KerasCV](https://keras.io/keras_cv/), [TensorFlow](https://www.tensorflow.org/?hl=pt-br), [OpenCV](https://opencv.org/), [pandas](https://pandas.pydata.org/), [Streamlit](https://streamlit.io/), [Plotly express](https://plotly.com/python/plotly-express/), [seaborn](https://seaborn.pydata.org/), [Matplotlib](https://matplotlib.org/), [numpy](https://numpy.org/), [Pillow](https://pillow.readthedocs.io/en/stable/) and [gdown](https://pypi.org/project/gdown/).
+- Libraries:
+     - Machine Learning and Data Mining: [Keras](https://keras.io/), [TensorFlow](https://www.tensorflow.org/?hl=pt-br);
+     - Computer Vision: [OpenCV](https://opencv.org/), [KerasCV](https://keras.io/keras_cv/);
+     - Data Analysis, Visualization and Manipulation: [pandas](https://pandas.pydata.org/), [Streamlit](https://streamlit.io/), [Plotly express](https://plotly.com/python/plotly-express/), [seaborn](https://seaborn.pydata.org/), [Matplotlib](https://matplotlib.org/), [numpy](https://numpy.org/);
+     - Others: [Pillow](https://pillow.readthedocs.io/en/stable/), [gdown](https://pypi.org/project/gdown/).
 
 # 2. Web App
 
@@ -64,6 +70,7 @@ In this section, you can follow detail instructions for executing the project.
     .
     ├── README.md                             <- Project's documentation
     ├── requirements.txt                      <- File containing all the required dependencies to run the project
+    ├── assets                                # Directory containing images used in README.md
     └── src                                   # Directory containing the web application
         ├── 1_🏠_Home.py                      <- Main page with the tumour detector
         └── pages                             # Child pages directory
